@@ -79,14 +79,20 @@ const Index = () => {
   const [evaluations, setEvaluations] = useState<CandidateEvaluation[]>([]);
 
   const calculateOverallScore = (ratings: {[key: string]: number}) => {
-    const weights = { "Technical Expertise": 0.25, "Communication Skills": 0.20, "Cultural Fit": 0.20, "Problem-Solving": 0.20, "Professionalism": 0.15 };
+    const weights = { 
+      "Technical Expertise": 0.25, 
+      "Communication Skills": 0.20, 
+      "Cultural Fit": 0.20, 
+      "Problem-Solving": 0.20, 
+      "Professionalism": 0.15 
+    };
     let totalScore = 0;
     let totalWeight = 0;
     
     Object.entries(ratings).forEach(([category, rating]) => {
-      if (weights[category]) {
-        totalScore += rating * weights[category];
-        totalWeight += weights[category];
+      if (weights[category as keyof typeof weights]) {
+        totalScore += rating * weights[category as keyof typeof weights];
+        totalWeight += weights[category as keyof typeof weights];
       }
     });
     
