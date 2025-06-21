@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import { Calendar, Clock, Users, Video, MapPin, Plus, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -13,55 +14,12 @@ interface Candidate {
   format: 'In-Person' | 'Virtual';
 }
 
-const InterviewSchedule = () => {
-  const [candidates, setCandidates] = useState<Candidate[]>([
-    {
-      id: '1',
-      name: 'Dr. Sarah Chen',
-      role: 'Clinical Research Coordinator',
-      date: '2025-01-27',
-      time: '09:00',
-      interviewers: 'Dr. Martinez, Ms. Johnson',
-      format: 'In-Person'
-    },
-    {
-      id: '2',
-      name: 'Michael Rodriguez',
-      role: 'Oncology Nurse',
-      date: '2025-01-27',
-      time: '11:00',
-      interviewers: 'Director Thompson, CNO Davis',
-      format: 'Virtual'
-    },
-    {
-      id: '3',
-      name: 'Dr. Amanda Foster',
-      role: 'Medical Oncologist',
-      date: '2025-01-28',
-      time: '14:00',
-      interviewers: 'Chief Medical Officer, Dr. Williams',
-      format: 'In-Person'
-    },
-    {
-      id: '4',
-      name: 'James Park',
-      role: 'Clinical Data Manager',
-      date: '2025-01-29',
-      time: '10:30',
-      interviewers: 'IT Director, Quality Manager',
-      format: 'Virtual'
-    },
-    {
-      id: '5',
-      name: 'Dr. Lisa Wong',
-      role: 'Radiation Oncologist',
-      date: '2025-01-30',
-      time: '13:00',
-      interviewers: 'Department Head, Dr. Kumar',
-      format: 'In-Person'
-    }
-  ]);
+interface InterviewScheduleProps {
+  candidates: Candidate[];
+  setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>;
+}
 
+const InterviewSchedule = ({ candidates, setCandidates }: InterviewScheduleProps) => {
   const addCandidate = () => {
     const newCandidate: Candidate = {
       id: Date.now().toString(),
