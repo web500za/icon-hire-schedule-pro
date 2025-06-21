@@ -118,7 +118,7 @@ const Index = () => {
 
   const evaluatedCount = evaluations.length;
   const averageScore = evaluations.length > 0 
-    ? (evaluations.reduce((sum, eval) => sum + eval.overallScore, 0) / evaluations.length).toFixed(1)
+    ? (evaluations.reduce((sum, evaluation) => sum + evaluation.overallScore, 0) / evaluations.length).toFixed(1)
     : '0.0';
 
   return (
