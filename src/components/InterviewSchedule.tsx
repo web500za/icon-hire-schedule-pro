@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Calendar, Clock, Users, Video, MapPin, Plus, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -106,22 +105,22 @@ const InterviewSchedule = () => {
   };
 
   return (
-    <Card className="w-full">
-      <CardHeader className="border-b bg-slate-50">
+    <Card className="w-full bg-slate-800/80 border-slate-700 backdrop-blur-sm">
+      <CardHeader className="border-b border-slate-700 bg-slate-900/50">
         <div className="flex justify-between items-center">
           <div>
-            <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-              <Calendar className="h-6 w-6 text-blue-600" />
+            <CardTitle className="text-2xl font-bold text-white flex items-center gap-2">
+              <Calendar className="h-6 w-6 text-blue-400" />
               Weekly Interview Schedule
             </CardTitle>
-            <p className="text-slate-600 mt-1">Icon Oncology - Recruitment Department</p>
+            <p className="text-slate-300 mt-1">Icon Oncology - Recruitment Department</p>
           </div>
           <div className="flex gap-2">
-            <Button onClick={addCandidate} className="bg-blue-600 hover:bg-blue-700">
+            <Button onClick={addCandidate} className="bg-blue-600 hover:bg-blue-700 text-white">
               <Plus className="h-4 w-4 mr-2" />
               Add Candidate
             </Button>
-            <Button onClick={exportToCSV} variant="outline">
+            <Button onClick={exportToCSV} variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white">
               <Download className="h-4 w-4 mr-2" />
               Export CSV
             </Button>
@@ -131,24 +130,24 @@ const InterviewSchedule = () => {
       <CardContent className="p-0">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 border-b">
+            <thead className="bg-slate-900/50 border-b border-slate-700">
               <tr>
-                <th className="text-left p-4 font-semibold text-gray-700">Candidate Name</th>
-                <th className="text-left p-4 font-semibold text-gray-700">Role Applied For</th>
-                <th className="text-left p-4 font-semibold text-gray-700">Date & Time</th>
-                <th className="text-left p-4 font-semibold text-gray-700">Interviewer(s)</th>
-                <th className="text-left p-4 font-semibold text-gray-700">Interview Format</th>
+                <th className="text-left p-4 font-semibold text-slate-200">Candidate Name</th>
+                <th className="text-left p-4 font-semibold text-slate-200">Role Applied For</th>
+                <th className="text-left p-4 font-semibold text-slate-200">Date & Time</th>
+                <th className="text-left p-4 font-semibold text-slate-200">Interviewer(s)</th>
+                <th className="text-left p-4 font-semibold text-slate-200">Interview Format</th>
               </tr>
             </thead>
             <tbody>
               {candidates.map((candidate, index) => (
-                <tr key={candidate.id} className={`border-b hover:bg-gray-50 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-25'}`}>
+                <tr key={candidate.id} className={`border-b border-slate-700 hover:bg-slate-700/50 ${index % 2 === 0 ? 'bg-slate-800/30' : 'bg-slate-800/50'}`}>
                   <td className="p-4">
                     <input
                       type="text"
                       value={candidate.name}
                       onChange={(e) => updateCandidate(candidate.id, 'name', e.target.value)}
-                      className="w-full border-none bg-transparent font-medium text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white rounded px-2 py-1"
+                      className="w-full border-none bg-transparent font-medium text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-slate-700/50 rounded px-2 py-1"
                     />
                   </td>
                   <td className="p-4">
@@ -156,51 +155,51 @@ const InterviewSchedule = () => {
                       type="text"
                       value={candidate.role}
                       onChange={(e) => updateCandidate(candidate.id, 'role', e.target.value)}
-                      className="w-full border-none bg-transparent text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white rounded px-2 py-1"
+                      className="w-full border-none bg-transparent text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-slate-700/50 rounded px-2 py-1"
                     />
                   </td>
                   <td className="p-4">
                     <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-gray-400" />
+                      <Calendar className="h-4 w-4 text-slate-400" />
                       <input
                         type="date"
                         value={candidate.date}
                         onChange={(e) => updateCandidate(candidate.id, 'date', e.target.value)}
-                        className="border-none bg-transparent text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white rounded px-2 py-1"
+                        className="border-none bg-transparent text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-slate-700/50 rounded px-2 py-1"
                       />
-                      <Clock className="h-4 w-4 text-gray-400 ml-2" />
+                      <Clock className="h-4 w-4 text-slate-400 ml-2" />
                       <input
                         type="time"
                         value={candidate.time}
                         onChange={(e) => updateCandidate(candidate.id, 'time', e.target.value)}
-                        className="border-none bg-transparent text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white rounded px-2 py-1"
+                        className="border-none bg-transparent text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-slate-700/50 rounded px-2 py-1"
                       />
                     </div>
                   </td>
                   <td className="p-4">
                     <div className="flex items-center gap-2">
-                      <Users className="h-4 w-4 text-gray-400" />
+                      <Users className="h-4 w-4 text-slate-400" />
                       <input
                         type="text"
                         value={candidate.interviewers}
                         onChange={(e) => updateCandidate(candidate.id, 'interviewers', e.target.value)}
-                        className="w-full border-none bg-transparent text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white rounded px-2 py-1"
+                        className="w-full border-none bg-transparent text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-slate-700/50 rounded px-2 py-1"
                       />
                     </div>
                   </td>
                   <td className="p-4">
                     <div className="flex items-center gap-2">
                       {candidate.format === 'Virtual' ? 
-                        <Video className="h-4 w-4 text-green-500" /> : 
-                        <MapPin className="h-4 w-4 text-blue-500" />
+                        <Video className="h-4 w-4 text-green-400" /> : 
+                        <MapPin className="h-4 w-4 text-blue-400" />
                       }
                       <select
                         value={candidate.format}
                         onChange={(e) => updateCandidate(candidate.id, 'format', e.target.value)}
-                        className="border-none bg-transparent text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white rounded px-2 py-1"
+                        className="border-none bg-transparent text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-slate-700/50 rounded px-2 py-1"
                       >
-                        <option value="Virtual">Virtual</option>
-                        <option value="In-Person">In-Person</option>
+                        <option value="Virtual" className="bg-slate-800 text-slate-200">Virtual</option>
+                        <option value="In-Person" className="bg-slate-800 text-slate-200">In-Person</option>
                       </select>
                     </div>
                   </td>
